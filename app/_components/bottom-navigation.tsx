@@ -29,7 +29,7 @@ const NavLink = ({ href, icon: Icon, label }: NavLinkProps) => {
 
 export function BottomNavigation() {
   return (
-    <section className="fixed bottom-0 left-0 z-50 grid w-full grid-cols-4 border-border/50 border-t bg-background/85 backdrop-blur">
+    <section className="fixed bottom-0 left-0 z-50 grid w-full grid-cols-4 border-t bg-background/85 backdrop-blur">
       <NavLink href="/" label="خانه" icon={HomeIcon} />
       <NavLink href="/sites" label="سایت ها" icon={LayoutGridIcon} />
       <NavLink href="/dashboard" label="داشبورد" icon={PieChartIcon} />

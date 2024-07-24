@@ -7,7 +7,6 @@ import { siteConfig } from '@/config/site';
 import type { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
 import { BottomNavigation } from './_components/bottom-navigation';
-import { Header } from './_components/header';
 
 export const metadata: Metadata = {
   title: {
@@ -38,8 +37,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             defaultTheme="light"
             disableTransitionOnChange
           >
-            <Header />
-            <main className="container pb-16 md:pb-0">{children}</main>
+            {children}
             <BottomNavigation />
             <ToastProvider />
           </ThemeProvider>
