@@ -20,7 +20,7 @@ type MenuLink = {
 
 export default () => {
   return (
-    <div className="grid gap-2">
+    <section className="grid gap-2 p-4">
       <header className="mb-4 flex items-center gap-4">
         <BackButton />
         <h1 className="font-bold text-foreground text-xl">تنظیمات</h1>
@@ -43,7 +43,7 @@ export default () => {
       </div>
       <Separator className="bg-border/40" />
       <SignOutButton />
-    </div>
+    </section>
   );
 };
 

@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { logger } from "hono/logger";
 import puppeteer from "puppeteer";
-import { siteRoute } from "./routes/site";
+import { postRoute } from "./routes/post";
 import { userRoute } from "./routes/user";
 
 export const app = new Hono();
@@ -34,6 +34,6 @@ app.post("/api/take", async (c) => {
 const apiRoutes = app
   .basePath("/api")
   .route("/user", userRoute)
-  .route("/sites", siteRoute);
+  .route("/posts", postRoute);
 
 export type AppType = typeof apiRoutes;

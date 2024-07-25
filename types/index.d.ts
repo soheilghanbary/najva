@@ -1,4 +1,4 @@
-import type { Site, User } from "@prisma/client";
+import type { Post, Prisma, Site, User } from "@prisma/client";
 
 type NavLinkProps = {
   href: string;
@@ -9,3 +9,5 @@ type NavLinkProps = {
 type SiteProps = Site & {
   user: User;
 };
+
+type PostProps = Post & Prisma.PostGetPayload<{ include: { user: true } }>;

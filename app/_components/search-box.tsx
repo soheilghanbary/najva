@@ -21,7 +21,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useMediaQuery } from '@/hooks/use-media-query';
-import { useSite } from '@/hooks/use-site';
+import { useSite } from '@/hooks/use-posts';
 import type { SiteProps } from '@/types';
 import { Link2Icon, SearchIcon } from 'lucide-react';
 import * as React from 'react';

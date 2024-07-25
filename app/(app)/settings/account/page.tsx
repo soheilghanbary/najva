@@ -4,7 +4,7 @@ import { UserUpload } from '@/app/_components/user-upload';
 
 export default async () => {
   return (
-    <section>
+    <section className="p-4">
       <header className="mb-4 flex items-center gap-4">
         <BackButton />
         <h1 className="font-bold text-foreground text-xl">

@@ -25,6 +25,9 @@
         "noShadowRestrictedNames": "off",
         "noArrayIndexKey": "off"
       },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
       "nursery": {
         "useSortedClasses": {
           "fix": "safe",

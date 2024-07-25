@@ -12,6 +12,6 @@ export function generateUrl(url: string) {
     : `https://${url}`;
 }
 
-export function currentNow() {
+export function currentNow(createdAt: Date) {
   return format(new Date(), "yyyy/MM/dd");
 }
