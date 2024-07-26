@@ -1,4 +1,4 @@
-import { PostList } from '@/app/_components/post-list';
+import { LikedPostList, PostList } from '@/app/_components/post-list';
 import { UserProfile } from '@/app/_components/user-profile';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -13,7 +13,9 @@ export default () => (
       <TabsContent value="posts">
         <PostList />
       </TabsContent>
-      <TabsContent value="likes">مشاهده پست های لایک شده</TabsContent>
+      <TabsContent value="likes">
+        <LikedPostList />
+      </TabsContent>
     </Tabs>
   </section>
 );

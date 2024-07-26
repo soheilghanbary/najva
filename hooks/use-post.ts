@@ -23,6 +23,13 @@ export const useAddPost = () => {
   });
 };
 
+// get all liked posts
+export const useLikedPosts = () =>
+  useQuery<PostProps[]>({
+    queryKey: ["liked-posts"],
+    queryFn: () => fetch("/api/posts/liked").then((res) => res.json()),
+  });
+
 export const useLikePost = () => {
   const qc = useQueryClient();
   return useMutation({
@@ -32,7 +39,10 @@ export const useLikePost = () => {
       });
       return await res.json();
     },
-    onSuccess: () => qc.invalidateQueries({ queryKey: ["posts"] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["posts"] });
+      qc.invalidateQueries({ queryKey: ["liked-posts"] });
+    },
   });
 };
 

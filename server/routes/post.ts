@@ -17,6 +17,15 @@ export const postRoute = new Hono()
     });
     return c.json(sites);
   })
+  .get("/liked", async (c) => {
+    const session = await getUserSession();
+    const sites = await db.post.findMany({
+      where: { likes: { some: { userId: session?.id! } } },
+      include: { user: true, likes: true },
+      orderBy: { createdAt: "desc" },
+    });
+    return c.json(sites);
+  })
   .post("/", async (c) => {
     const { content } = (await c.req.json()) as { content: string };
     const session = await getUserSession();

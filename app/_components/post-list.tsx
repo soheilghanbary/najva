@@ -1,11 +1,22 @@
 'use client';
 import { Avatar } from '@/components/avatar';
 import { LoadingIcon } from '@/components/icons';
-import { useAllPosts } from '@/hooks/use-post';
+import { useAllPosts, useLikedPosts } from '@/hooks/use-post';
 import { currentNow } from '@/lib/utils';
 import type { PostProps } from '@/types';
 import { MessageCircleIcon, RefreshCwIcon } from 'lucide-react';
 import { PostLikeButton } from './post-like-button';
+
+export function LikedPostList() {
+  const { data: posts, isPending } = useLikedPosts();
+  if (isPending && !posts)
+    return (
+      <div className="flex h-60 items-center justify-center fill-primary">
+        <LoadingIcon />
+      </div>
+    );
+  return posts?.map((post) => <PostCard key={post.id} {...post} />);
+}
 
 export function PostList() {
   const { data: posts, isPending } = useAllPosts();
