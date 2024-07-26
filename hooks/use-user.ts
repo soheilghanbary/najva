@@ -25,3 +25,9 @@ export function useUser() {
 
   return { getUser, updateUser };
 }
+
+export const useGetUser = () =>
+  useQuery({
+    queryKey: ["user"],
+    queryFn: () => fetch("/api/user").then((res) => res.json()),
+  });

@@ -1,39 +1,25 @@
 'use client';
 import { LogoIcon } from '@/components/icons';
+import { navLinks } from '@/config/nav-links';
 import { cn } from '@/lib/utils';
-import {
-  BellIcon,
-  HomeIcon,
-  type LucideIcon,
-  SearchIcon,
-  SettingsIcon,
-  UserIcon,
-} from 'lucide-react';
+import type { NavLinkProps } from '@/types';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { NewPost } from './new-post';
+import { NewPost } from './new-post-modal';
 
 export const Sidebar = () => (
-  <aside className="sticky top-0 h-dvh w-64 px-4 py-2">
+  <aside className="sticky top-0 hidden h-dvh w-64 px-4 py-2 md:inline">
     <LogoIcon className="mr-2 mb-4 size-10" />
     <nav className="grid gap-2">
-      <SidebarLink href="/home" label="خانه" icon={HomeIcon} />
-      <SidebarLink href="/search" label="جستجو" icon={SearchIcon} />
-      <SidebarLink href="/notifications" label="اعلانات" icon={BellIcon} />
-      <SidebarLink href="/profile" label="پروفایل کاربری" icon={UserIcon} />
-      <SidebarLink href="/settings" label="تنظیمات" icon={SettingsIcon} />
+      {navLinks.map(({ href, label, icon }, i) => (
+        <SidebarLink key={i} href={href} label={label} icon={icon} />
+      ))}
     </nav>
     <NewPost />
   </aside>
 );
 
-type SidebarLinkProps = {
-  href: string;
-  label: string;
-  icon: LucideIcon;
-};
-
-const SidebarLink = ({ href, label, icon: Icon }: SidebarLinkProps) => {
+const SidebarLink = ({ href, label, icon: Icon }: NavLinkProps) => {
   const pathname = usePathname();
   const isActive = pathname === href;
   return (

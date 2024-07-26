@@ -7,6 +7,7 @@ import localFont from "next/font/local";
 // })
 
 export const font = localFont({
+  variable: "--irsans",
   src: [
     {
       path: "./fonts/IRANSansX-Light.woff2",

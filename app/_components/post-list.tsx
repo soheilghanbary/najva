@@ -4,7 +4,8 @@ import { LoadingIcon } from '@/components/icons';
 import { useAllPosts } from '@/hooks/use-post';
 import { currentNow } from '@/lib/utils';
 import type { PostProps } from '@/types';
-import { HeartIcon, MessageCircleIcon, RefreshCwIcon } from 'lucide-react';
+import { MessageCircleIcon, RefreshCwIcon } from 'lucide-react';
+import { PostLikeButton } from './post-like-button';
 
 export function PostList() {
   const { data: posts, isPending } = useAllPosts();
@@ -14,13 +15,7 @@ export function PostList() {
         <LoadingIcon />
       </div>
     );
-  return (
-    <div>
-      {posts?.map((post) => (
-        <PostCard key={post.id} {...post} />
-      ))}
-    </div>
-  );
+  return posts?.map((post) => <PostCard key={post.id} {...post} />);
 }
 
 const PostCard = (post: PostProps) => (
@@ -35,13 +30,7 @@ const PostCard = (post: PostProps) => (
       </div>
       <div id="content" dangerouslySetInnerHTML={{ __html: post.content }} />
       <div className="float-end flex items-center gap-6">
-        <button
-          type="button"
-          className="flex items-center gap-2 text-muted-foreground text-sm"
-        >
-          344
-          <HeartIcon className="size-4 text-destructive" />
-        </button>
+        <PostLikeButton postId={post.id} likes={post.likes.length} />
         <button
           type="button"
           className="flex items-center gap-2 text-muted-foreground text-sm"

@@ -45,8 +45,6 @@ model Like {
   postId    String
 
   @@unique([userId, postId])
-  @@index([userId])
-  @@index([postId])
 }
 
 model Comment {
@@ -58,7 +56,4 @@ model Comment {
   userId    String
   post      Post     @relation(fields: [postId], references: [id])
   postId    String
-
-  @@index([userId])
-  @@index([postId])
 }

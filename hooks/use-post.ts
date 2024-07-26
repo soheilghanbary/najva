@@ -23,6 +23,19 @@ export const useAddPost = () => {
   });
 };
 
+export const useLikePost = () => {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const res = await fetch(`/api/posts/${id}/like`, {
+        method: "POST",
+      });
+      return await res.json();
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["posts"] }),
+  });
+};
+
 export const useDeletePost = () => {
   const qc = useQueryClient();
   return useMutation({

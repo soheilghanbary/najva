@@ -10,4 +10,5 @@ type SiteProps = Site & {
   user: User;
 };
 
-type PostProps = Post & Prisma.PostGetPayload<{ include: { user: true } }>;
+type PostProps = Post &
+  Prisma.PostGetPayload<{ include: { user: true; likes: true } }>;

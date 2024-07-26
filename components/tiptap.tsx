@@ -86,7 +86,11 @@ const Tiptap = ({ content, setContent, onClick }: TipTapProps) => {
 
   return (
     <section className="grid gap-4">
-      <EditorContent className="min-h-60 w-full" editor={editor} />
+      <EditorContent
+        className="min-h-60 w-full"
+        editor={editor}
+        placeholder="hello world"
+      />
       <Separator className="bg-border" />
       <nav className="flex items-center gap-4">
         <Button

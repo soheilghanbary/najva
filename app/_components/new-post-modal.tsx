@@ -15,7 +15,7 @@ import { toast } from 'sonner';
 
 export function NewPost() {
   const [open, setOpen] = useState(false);
-  const [content, setContent] = useState('<p>hello from parent!</p>');
+  const [content, setContent] = useState('');
   const addPost = useAddPost();
   const onSubmit = () => {
     addPost.mutate(content, {
