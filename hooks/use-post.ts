@@ -19,9 +19,19 @@ export const useAddPost = () => {
       });
       return await res.json();
     },
-    onSuccess: () => qc.invalidateQueries({ queryKey: ["posts"] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["posts"] });
+      qc.invalidateQueries({ queryKey: ["user-posts"] });
+    },
   });
 };
+
+// get all user posts
+export const useUserPosts = () =>
+  useQuery<PostProps[]>({
+    queryKey: ["user-posts"],
+    queryFn: () => fetch("/api/posts/user").then((res) => res.json()),
+  });
 
 // get all liked posts
 export const useLikedPosts = () =>

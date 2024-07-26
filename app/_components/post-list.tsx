@@ -1,11 +1,26 @@
 'use client';
 import { Avatar } from '@/components/avatar';
 import { LoadingIcon } from '@/components/icons';
-import { useAllPosts, useLikedPosts } from '@/hooks/use-post';
+import { useAllPosts, useLikedPosts, useUserPosts } from '@/hooks/use-post';
 import { currentNow } from '@/lib/utils';
 import type { PostProps } from '@/types';
 import { MessageCircleIcon, RefreshCwIcon } from 'lucide-react';
 import { PostLikeButton } from './post-like-button';
+
+export function UserPostList() {
+  const { data: posts, isPending } = useUserPosts();
+  if (isPending && !posts)
+    return (
+      <div className="flex h-60 items-center justify-center fill-primary">
+        <LoadingIcon />
+      </div>
+    );
+
+  if (!posts?.length)
+    return <p className="my-8 text-muted-foreground">پستی ننوشتی 😒</p>;
+
+  return posts?.map((post) => <PostCard key={post.id} {...post} />);
+}
 
 export function LikedPostList() {
   const { data: posts, isPending } = useLikedPosts();

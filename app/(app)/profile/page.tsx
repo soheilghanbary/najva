@@ -1,4 +1,8 @@
-import { LikedPostList, PostList } from '@/app/_components/post-list';
+import {
+  LikedPostList,
+  PostList,
+  UserPostList,
+} from '@/app/_components/post-list';
 import { UserProfile } from '@/app/_components/user-profile';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -11,7 +15,7 @@ export default () => (
         <TabsTrigger value="likes">پسندیده ها</TabsTrigger>
       </TabsList>
       <TabsContent value="posts">
-        <PostList />
+        <UserPostList />
       </TabsContent>
       <TabsContent value="likes">
         <LikedPostList />

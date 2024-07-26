@@ -22,6 +22,7 @@ export function NewPost() {
       onSuccess() {
         setOpen(false);
         toast.success('پست جدید ثبت شد');
+        setContent('');
       },
     });
   };
